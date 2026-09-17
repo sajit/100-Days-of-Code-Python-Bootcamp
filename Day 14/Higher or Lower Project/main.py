@@ -57,6 +57,7 @@ def play_game(service: HLService):
                 end_game = True
         else:
             print("Invalid input. Please type 'A' or 'B'.")
+            continue
         print(f"A: {a['name']}, Followers: {a['follower_count']}")
         print(f"B: {b['name']}, Followers: {b['follower_count']}")
     print(f"Wrong! Your final score is {score}.")
