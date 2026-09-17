@@ -1,5 +1,5 @@
 def greet(name):
-    printf("Hello {name}!")
+    print(f"Hello {name}!")
 
 name = input("Enter your name")
 greet(name)
