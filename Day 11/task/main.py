@@ -52,10 +52,14 @@ def play_game():
                         
     print("Final Results")
     print(f"Your cards: {user_cards}")
-    print(f"Computer's cards: {computer_cards}")    
-    if computer_score > user_score and computer_score <= 21:
-        print(f"Computer's cards: {computer_cards} Computer wins.")
-    elif computer_score < user_score and user_score <= 21:
+    print(f"Computer's cards: {computer_cards}")  
+
+    if computer_score > user_score:
+        if computer_score > 21:
+            print(f"Computer went over {computer_cards}. You win")
+        else:    
+            print(f"Computer's cards: {computer_cards} Computer wins.")
+    elif computer_score < user_score:
         print(f"Computer's cards: {computer_cards} You win.")
     else:
         print(f"Computer's cards: {computer_cards} It's a draw.")
