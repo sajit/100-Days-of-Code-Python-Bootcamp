@@ -1,20 +1,14 @@
 from typing import Protocol
-from game_data import data
+
 import random
 from art import logo
-
+from game_data import data
 class HLService(Protocol):
     """
     An interface to get HL data
     """
 
-    def get_details(self, name: str) -> dict:
-        """
-        Get details of a given name
-        :param name: Name to get details for
-        :return: Details of the name
-        """
-        ...
+
 
     def generate_options(self) -> tuple:
         """
@@ -23,23 +17,14 @@ class HLService(Protocol):
         """
         ...
 class LocalHLService:
+    
     """
     A local implementation of HLService that uses a predefined dataset.
     """
 
-    def __init__(self, data: list):
+    def __init__(self):
         self.data = data
 
-    def get_details(self, name: str) -> dict:
-        """
-        Get details of a given name from the local dataset.
-        :param name: Name to get details for
-        :return: Details of the name if found, else an empty dictionary
-        """
-        for entry in self.data:
-            if entry['name'] == name:
-                return entry
-        return {}
 
     def generate_options(self) -> tuple:
         option1 = random.choice(self.data)
@@ -77,6 +62,6 @@ def play_game(service: HLService):
     print(f"Wrong! Your final score is {score}.")
 
 
-play_game(LocalHLService(data))
+play_game(LocalHLService())
 
     
