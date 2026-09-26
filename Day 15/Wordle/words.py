@@ -1,0 +1,22 @@
+word_list = [
+    "apple", "beach", "chair", "dance", "eagle",
+    "flame", "grape", "house", "image", "jelly",
+    "knife", "lemon", "mouse", "noble", "ocean",
+    "piano", "queen", "river", "smile", "table",
+    "uncle", "vivid", "water", "xenon", "young",
+    "zebra", "about", "adore", "alert", "alone",
+    "angel", "arise", "beast", "begin", "blame",
+    "brave", "bread", "bring", "brown", "candy",
+    "carry", "cause", "chase", "clean", "clear",
+    "climb", "clock", "cloud", "crane", "cream",
+    "dream", "drink", "drive", "earth", "enjoy",
+    "entry", "event", "faith", "field", "final",
+    "first", "flock", "floor", "focus", "force",
+    "fresh", "front", "fruit", "giant", "given",
+    "glass", "globe", "green", "happy", "heart",
+    "heavy", "horse", "human", "ideal", "juice",
+    "light", "lunch", "magic", "metal", "money",
+    "music", "night", "noise", "north", "party",
+    "peace", "phone", "place", "plant", "point",
+    "power", "proud", "quick", "quiet", "radio"
+]
