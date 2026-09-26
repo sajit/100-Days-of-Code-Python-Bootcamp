@@ -78,6 +78,7 @@ while choice != "off":
         print_report()
     elif choice in MENU:
         #check if sufficient resources are available
+
         if check_resources(MENU[choice]["ingredients"]):
             
             print(f"Cost is ${MENU[choice]['cost']:.2f}. Please insert coins.")
