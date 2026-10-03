@@ -1,9 +1,9 @@
 from question_model import Question
 from data import question_data
 
-questions = []
+question_bank = []
 for item in question_data:
-    questions.append(Question(item["text"],item["answer"]))
+    question_bank.append(Question(item["text"],item["answer"]))
 
-for question in questions:
+for question in question_bank:
     print(question)
