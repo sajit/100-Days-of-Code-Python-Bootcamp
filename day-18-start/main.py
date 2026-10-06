@@ -5,8 +5,8 @@ screen = Screen()
 image_name = "/Users/sajit/PycharmProjects/100-Days-of-Code-Python-Bootcamp/day-18-start/leonardo.png"
 screen.register_shape(image_name)
 screen.screensize(200,200)
-leonardo = Turtle()
-leonardo.shape(image_name)
+# leonardo = Turtle()
+# leonardo.shape(image_name)
 
 
 warden_image_name = "/Users/sajit/PycharmProjects/100-Days-of-Code-Python-Bootcamp/day-18-start/warden.png"
@@ -33,6 +33,20 @@ def dashed_line(turtle):
         turtle.forward(10)
         turtle.pendown()
 
-dashed_line(leonardo)
+#dashed_line(leonardo)
+
+def draw_shapes():
+    turtle = Turtle()
+    for i in range(4,7):
+        angle = 360/i
+        print(f"i={i} , angle={angle}")
+        for s in range(0,i):
+            print(f"s={s},i={i}")
+            turtle.forward(100)
+            turtle.rt(angle)
+
+
+draw_shapes()
+
 screen.exitonclick()
 
