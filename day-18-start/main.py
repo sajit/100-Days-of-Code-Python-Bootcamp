@@ -25,6 +25,14 @@ def draw_square(size,turtle):
     turtle.rt(90)
     turtle.forward(size)
 
-draw_square(100,leonardo)
+#draw_square(100,leonardo)
+def dashed_line(turtle):
+    for i in range(1,10):
+        turtle.forward(10)
+        turtle.penup()
+        turtle.forward(10)
+        turtle.pendown()
+
+dashed_line(leonardo)
 screen.exitonclick()
 
