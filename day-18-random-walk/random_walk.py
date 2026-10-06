@@ -10,6 +10,7 @@ def get_distance():
 
 def random_walk():
     turtle = Turtle()
+    turtle.pensize(10)
     for i in range(0,50):
         distance = get_distance()
         turtle.pencolor(get_random_color())
