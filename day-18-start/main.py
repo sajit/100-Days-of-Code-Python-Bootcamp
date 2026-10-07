@@ -5,16 +5,16 @@ screen = Screen()
 image_name = "/Users/sajit/PycharmProjects/100-Days-of-Code-Python-Bootcamp/day-18-start/leonardo.png"
 screen.register_shape(image_name)
 screen.screensize(200,200)
-# leonardo = Turtle()
-# leonardo.shape(image_name)
+leonardo = Turtle()
+leonardo.shape(image_name)
 
 
 warden_image_name = "/Users/sajit/PycharmProjects/100-Days-of-Code-Python-Bootcamp/day-18-start/warden.png"
 screen.register_shape(warden_image_name)
 
-# warden = Turtle()
-# warden.shape(warden_image_name)
-# warden.goto(10,10)
+warden = Turtle()
+warden.shape(warden_image_name)
+warden.goto(100,100)
 
 def draw_square(size,turtle):
     turtle.forward(size)
@@ -46,7 +46,7 @@ def draw_shapes():
             turtle.rt(angle)
 
 
-draw_shapes()
+#draw_shapes()
 
 screen.exitonclick()
 
