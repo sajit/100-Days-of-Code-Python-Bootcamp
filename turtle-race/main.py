@@ -29,8 +29,9 @@ def race(user_guess):
     winner_color = None
     while not is_finish:
         t = random.choice(tmnt)
-        print(f"Turtle chosen {t.color()[0]}")
-        t.forward(10)
+        d = random.randint(0,10)
+        print(f"Turtle chosen {t.color()[0]} to move by {d}")
+        t.forward(d)
         if t.pos()[0] >= 250:
             is_finish = True
             winner_color = t.color()[0]
