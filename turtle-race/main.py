@@ -1,9 +1,10 @@
 from turtle import Turtle, Screen
 import random
 screen = Screen()
+screen.title("Turtle Race")
 
 # Define the TMNT team colors and their starting Y-coordinates
-turtles = [("blue", 0), ("red", 50), ("orange", 100), ("yellow", 150)]
+turtles = [("blue", 0), ("red", 50), ("orange", 100), ("purple", 150)]
 tmnt = []
 for color, y_pos in turtles:
     t = Turtle(shape="turtle")
