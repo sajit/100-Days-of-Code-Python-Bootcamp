@@ -21,5 +21,5 @@ screen.onkey(snake.right,"Right")
 while game_is_on:
     snake.move()
     screen.update()
-    time.sleep(1)
+    time.sleep(0.1)
 screen.exitonclick()
