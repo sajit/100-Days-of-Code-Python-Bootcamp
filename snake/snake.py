@@ -6,6 +6,7 @@ class Snake:
         self.tail = (-20,0)
         self.positions  = [self.head,(0,0),self.tail] 
         self.segments = []
+        self.MOVE_DISTANCE = 20
         for i in range(0,len(self.positions)):
             snake_body = Turtle(shape="square")
             snake_body.color("white")
@@ -15,18 +16,27 @@ class Snake:
             self.segments.append(snake_body)
         #self.current_direction = "right"
         
-        
+
+    def move(self):
+        for i in range(len(self.segments)-1,0,-1):
+            new_x = self.segments[i-1].xcor()
+            new_y = self.segments[i-1].ycor()
+            self.segments[i].goto(new_x,new_y)
+        self.segments[0].forward(self.MOVE_DISTANCE)
 
 
-    def move(self,direction):
-        if direction == "right":
-            for i in range(len(self.segments)-1,0,-1):
-                new_x = self.segments[i-1].xcor()
-                new_y = self.segments[i-1].ycor()
-                self.segments[i].goto(new_x,new_y)
-            self.segments[0].forward(20)
-        else:
-            pass
-   
+
+    def up(self):
+        self.segments[0].setheading(90)
+
+    def down(self):
+        self.segments[0].setheading(270)
+
+    def right(self):
+        self.segments[0].setheading(0)
+
+    def left(self):
+        self.segments[0].setheading(180)
+
 
         
