@@ -24,7 +24,8 @@ class Snake:
             self.segments[i].goto(new_x,new_y)
         self.segments[0].forward(self.MOVE_DISTANCE)
 
-
+    def get_head(self):
+        return self.segments[0]
 
     def up(self):
         self.segments[0].setheading(90)
