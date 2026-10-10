@@ -1,4 +1,4 @@
-from turtle import Screen
+from turtle import Screen, Turtle
 from snake import Snake
 from food import Food
 from scoreboard import Scoreboard
@@ -28,7 +28,8 @@ while game_is_on:
     time.sleep(SLEEP_TIME)
     snake.move()
     #Detect collision with food
-    if snake.get_head().distance(food) < 15:
+    snake_head = snake.get_head()
+    if snake_head.distance(food) < 15:
         
         food.refresh()
         scoreboard.increment(int(10/SLEEP_TIME))
@@ -37,4 +38,10 @@ while game_is_on:
         print(f"Collision. New speed {SLEEP_TIME}")
         # TODO increase size
 
+    #Detect collision with wall
+    if snake_head.xcor() > 280 or snake_head.xcor() < -280 or snake_head.ycor() > 280 or snake_head.ycor() < -280:
+        game_is_on = False
+        game_over = Turtle()
+        game_over.color("white")
+        game_over.write("Game Over!",align="center",font=("Arial",12,"normal"))
 screen.exitonclick()
