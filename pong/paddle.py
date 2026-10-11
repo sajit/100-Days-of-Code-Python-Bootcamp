@@ -6,5 +6,6 @@ class Paddle(Turtle):
         super().__init__(shape="square")
         self.color("white")
         self.segments = []
+        self.penup()
         self.goto(position)
 
