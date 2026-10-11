@@ -8,13 +8,15 @@ class Snake:
         self.segments = []
         self.MOVE_DISTANCE = 20
         for i in range(0,len(self.positions)):
-            snake_body = Turtle(shape="square")
-            snake_body.color("white")
-            position = self.positions[i]
-            snake_body.penup()
-            snake_body.goto(position)
-            self.segments.append(snake_body)
-        #self.current_direction = "right"
+            self.add_segment(self.positions[i])
+
+    def add_segment(self, position):
+        snake_body = Turtle(shape="square")
+        snake_body.color("white")
+        snake_body.penup()
+        snake_body.goto(position)
+        self.segments.append(snake_body)
+        
         
 
     def move(self):
@@ -39,5 +41,6 @@ class Snake:
     def left(self):
         self.segments[0].setheading(180)
 
-
+    def extend(self):
+        self.add_segment(self.segments[-1].position())
         
