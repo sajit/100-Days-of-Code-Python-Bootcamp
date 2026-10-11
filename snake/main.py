@@ -3,7 +3,7 @@ from snake import Snake
 from food import Food
 from scoreboard import Scoreboard
 import time
-SLEEP_TIME=1
+SLEEP_TIME=0.6
 
 def setup_screen():
     screen = Screen()
