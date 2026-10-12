@@ -16,17 +16,15 @@ class Paddle:
         paddle_segment.goto(position)
         return paddle_segment
 
-        
-    def move(self):
-        for i in range(len(self.segments)-1,0,-1):
-            new_x = self.segments[i-1].xcor()
-            new_y = self.segments[i-1].ycor()
-            self.segments[i].goto(new_x,new_y)
-        self.segments[0].forward(self.MOVE_DISTANCE)
-
-
     def up(self):
-        self.segments[0].setheading(90)
+        if self.segments[0].ycor() > 280:
+            return
+        for segment in self.segments:
+            segment.sety(segment.ycor() + MOVE_DISTANCE)
 
     def down(self):
-        self.segments[0].setheading(270)
+        if self.segments[len(self.segments)-1].ycor() < -280:
+            return
+        for segment in self.segments:
+            segment.sety(segment.ycor() - MOVE_DISTANCE)
+

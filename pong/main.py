@@ -8,7 +8,7 @@ def setup_screen():
     screen = Screen()
     screen.setup(600,600)
     screen.bgcolor("black")
-    screen.title("Snake")
+    screen.title("Pong")
     screen.tracer(0)
     screen.listen()
     return screen
@@ -26,7 +26,7 @@ screen.onkey(right_paddle.down,"Down")
 
 while game_is_on:
     screen.update()
-    time.sleep(0.5)
+    time.sleep(0.1)
 
 
 screen.exitonclick()
