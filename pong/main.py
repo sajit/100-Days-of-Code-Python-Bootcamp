@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from net import draw_net
+from scoreboard import Scoreboard
 import time
 
 game_is_on = True
@@ -18,7 +19,9 @@ screen = setup_screen()
 draw_net()
 
 left_paddle = Paddle(-200)
+left_player_score = Scoreboard((-100,250))
 right_paddle = Paddle(200)
+right_player_score = Scoreboard((100,250))
 
 screen.onkey(left_paddle.up,"w")
 screen.onkey(left_paddle.down,"s")
