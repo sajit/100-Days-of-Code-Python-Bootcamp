@@ -1,9 +1,32 @@
 from turtle import Screen
 from paddle import Paddle
+import time
 
-screen = Screen()
+game_is_on = True
 
-screen.bgcolor("black")
+def setup_screen():
+    screen = Screen()
+    screen.setup(600,600)
+    screen.bgcolor("black")
+    screen.title("Snake")
+    screen.tracer(0)
+    screen.listen()
+    return screen
+screen = setup_screen()
 
-left_paddle = Paddle((-100,0))
+
+left_paddle = Paddle(-200)
+right_paddle = Paddle(200)
+
+screen.onkey(left_paddle.up,"w")
+screen.onkey(left_paddle.down,"s")
+
+screen.onkey(right_paddle.up,"Up")
+screen.onkey(right_paddle.down,"Down")
+
+while game_is_on:
+    screen.update()
+    time.sleep(0.5)
+
+
 screen.exitonclick()
