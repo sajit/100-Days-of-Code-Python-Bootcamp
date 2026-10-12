@@ -5,7 +5,7 @@ class Paddle:
 
     def __init__(self,xcor):
         self.segments = []
-        for position in [(xcor,20),(xcor,0),(xcor,-20)]:
+        for position in [(xcor,40),(xcor,20),(xcor,0),(xcor,-20),(xcor,-40)]:
             self.segments.append(self.add_segment(position=position))
 
 

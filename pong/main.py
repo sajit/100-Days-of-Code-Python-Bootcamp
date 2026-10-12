@@ -19,9 +19,9 @@ screen = setup_screen()
 
 draw_net()
 
-left_paddle = Paddle(-200)
+left_paddle = Paddle(-350)
 left_player_score = Scoreboard((-100,250))
-right_paddle = Paddle(200)
+right_paddle = Paddle(350)
 right_player_score = Scoreboard((100,250))
 
 ball = Ball()
