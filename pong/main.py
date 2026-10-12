@@ -1,5 +1,6 @@
 from turtle import Screen
 from paddle import Paddle
+from net import draw_net
 import time
 
 game_is_on = True
@@ -14,6 +15,7 @@ def setup_screen():
     return screen
 screen = setup_screen()
 
+draw_net()
 
 left_paddle = Paddle(-200)
 right_paddle = Paddle(200)
