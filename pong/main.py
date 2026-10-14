@@ -43,14 +43,26 @@ while game_is_on and left_player_score.score < 5 and right_player_score.score < 
 
 
     #detect collision with left paddle
-    if ball.xcor() < -320 and left_paddle.catches_ball(ball):
-        ball.hit_paddle()
+    if ball.xcor() < -320:
+        if left_paddle.catches_ball(ball):
+            ball.hit_paddle()
+        else:
+            ball.refresh()
+            right_player_score.increment()
+            right_player_score.refresh()
 
     # detect collision with right paddle
-    if ball.xcor() > 320 and right_paddle.catches_ball(ball):
-        ball.hit_paddle()
+    if ball.xcor() > 320:
+        if right_paddle.catches_ball(ball):
+            ball.hit_paddle()
+        else:
+            ball.refresh()
+            left_player_score.increment()
+            left_player_score.refresh()
 
-    # detect miss
+
+left_winner = True if left_player_score.score > right_player_score.score else False
+print(f"Game over. Left won ? {left_winner}. ")
 
 
 screen.exitonclick()
