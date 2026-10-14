@@ -1,4 +1,4 @@
-from turtle import Screen
+from turtle import Screen, Turtle
 from paddle import Paddle
 from net import draw_net
 from scoreboard import Scoreboard
@@ -45,7 +45,7 @@ while game_is_on and left_player_score.score < 5 and right_player_score.score < 
     #detect collision with left paddle
     if ball.xcor() < -320:
         if left_paddle.catches_ball(ball):
-            ball.hit_paddle()
+            ball.hit_paddle(left_paddle, moving_right=True)
         else:
             ball.refresh()
             right_player_score.increment()
@@ -54,15 +54,25 @@ while game_is_on and left_player_score.score < 5 and right_player_score.score < 
     # detect collision with right paddle
     if ball.xcor() > 320:
         if right_paddle.catches_ball(ball):
-            ball.hit_paddle()
+            ball.hit_paddle(right_paddle, moving_right=False)
         else:
             ball.refresh()
             left_player_score.increment()
             left_player_score.refresh()
 
 
-left_winner = True if left_player_score.score > right_player_score.score else False
-print(f"Game over. Left won ? {left_winner}. ")
+winner = "Left" if left_player_score.score > right_player_score.score else "Right"
+game_over_message = Turtle()
+game_over_message.hideturtle()
+game_over_message.penup()
+game_over_message.color("white")
+game_over_message.goto(0, 0)
+game_over_message.write(
+    f"Game Over\n{winner} player wins!",
+    align="center",
+    font=("Arial", 24, "bold"),
+)
+screen.update()
 
 
 screen.exitonclick()

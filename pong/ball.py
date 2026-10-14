@@ -23,8 +23,19 @@ class Ball(Turtle):
     def move(self):
         self.forward(self.MOVE_DISTANCE)
 
-    def hit_paddle(self):
-        self.setheading((180 - self.heading()) % 360)
+    def hit_paddle(self, paddle, moving_right):
+        paddle_center_y = paddle.segments[len(paddle.segments) // 2].ycor()
+        paddle_half_height = 50
+        hit_offset = (self.ycor() - paddle_center_y) / paddle_half_height
+        hit_offset = max(-1, min(1, hit_offset))
+
+        angle = hit_offset * 60
+        if moving_right:
+            heading = angle if angle >= 0 else 360 + angle
+        else:
+            heading = 180 - angle
+
+        self.setheading(heading)
 
 
     def hit_wall(self):
