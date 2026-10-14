@@ -7,8 +7,10 @@ from scoreboard import Scoreboard
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
+screen.title("Turtle Crossing")
 
-game_is_on = False
+player = Player()
+game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
