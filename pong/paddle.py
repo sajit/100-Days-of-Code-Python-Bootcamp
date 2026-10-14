@@ -1,4 +1,5 @@
 from turtle import Turtle
+from ball import Ball
 
 MOVE_DISTANCE = 20
 class Paddle:
@@ -28,3 +29,13 @@ class Paddle:
         for segment in self.segments:
             segment.sety(segment.ycor() - MOVE_DISTANCE)
 
+
+    def catches_ball(self, ball:Ball):
+        x_distance = abs(ball.xcor() - self.segments[0].xcor())
+        y_distance_hit = False
+        for segment in self.segments:
+            if abs(ball.ycor() - segment.ycor()) < 20:
+                y_distance_hit = True
+                break
+
+        return y_distance_hit and x_distance < 30

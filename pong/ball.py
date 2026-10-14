@@ -9,23 +9,28 @@ class Ball(Turtle):
         self.color("white")
         self.penup()
         self.goto((0,0))
-        self.orientation = 1
+        self.orientation = random.randint(0,360)
+        self.setheading(self.orientation)
         self.MOVE_DISTANCE = 20
-        self.direction = None
 
 
     def refresh(self):
         self.penup()
         self.goto((0,0))
-        self.orientation = -1 if random.randint(0,1) == 0 else 1
-        angle = random.randint(-90,90)
-        if self.orientation == -1:
-            self.direction = 180 - angle
-        else:
-            self.direction = 0 + angle
-        self.setheading(self.direction)
+        self.orientation = random.randint(0,360)
+        print(f"Ball orientation {self.orientation}")
 
     def move(self):
-        new_x = self.xcor() + self.MOVE_DISTANCE*self.orientation
-        new_y = self.ycor()
+        self.forward(self.MOVE_DISTANCE)
 
+    def hit_paddle(self):
+        self.setheading((180 - self.heading()) % 360)
+
+
+    def hit_wall(self):
+        self.setheading((360 - self.heading()) % 360)
+
+
+
+# if __name__ == "__main__":
+#     ball = Ball()
