@@ -4,10 +4,11 @@ class Car(Turtle):
 
     def __init__(self,color,position,move_distance):
         super().__init__(shape="square")
-        self.color = color
+        self.color(color)
         self.setheading(180)
         self.penup()
         self.goto(position)
+        self.turtlesize(stretch_len=2,stretch_wid=1)
         self.move_distance = move_distance
 
     def move(self):

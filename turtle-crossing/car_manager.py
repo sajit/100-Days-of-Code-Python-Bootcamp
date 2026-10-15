@@ -19,10 +19,14 @@ class CarManager:
         y_cor_limit = (int)(self.height/2)
                 
         car_y_cor = random.randint(-y_cor_limit+50,y_cor_limit)
-        print(f"Starting {car_x_cor},{car_y_cor}")     
-        car = Car(random.choice(COLORS),(car_x_cor,car_y_cor),MOVE_INCREMENT)
+        car_color = random.choice(COLORS)
+        print(f"Starting {car_x_cor},{car_y_cor} with color {car_color}")     
+        car = Car(color=car_color,position=(car_x_cor,car_y_cor),move_distance=MOVE_INCREMENT)
         self.cars.append(car)
 
     def move_cars(self):
         for car in self.cars:
             car.move()
+
+    def get_cars(self):
+        return self.cars
