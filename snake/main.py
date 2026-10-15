@@ -23,6 +23,13 @@ screen.onkey(snake.left,"Left")
 screen.onkey(snake.right,"Right")
 food = Food()
 scoreboard = Scoreboard()
+high_score = Turtle()
+high_score.hideturtle()
+high_score.penup()
+high_score.goto(260,260)
+high_score.color("white")
+chs = scoreboard.get_current_high_score()
+high_score.write(f"High Score {chs}",align="right",font=("Arial",12,"normal"))
 
 def game_over():
     game_is_on = False
@@ -56,5 +63,8 @@ while game_is_on:
         if snake_head.distance(segment) < 10:
             print("Collision with tail")
             game_is_on = game_over()
-        
+
+if scoreboard.get_current_score() > scoreboard.get_current_high_score():
+    scoreboard.write_high_score(scoreboard.get_current_score())
+
 screen.exitonclick()
