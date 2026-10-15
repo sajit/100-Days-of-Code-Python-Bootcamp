@@ -28,13 +28,16 @@ while game_is_on:
     # if player reaches top
     if player.ycor() > 280:
         scoreboard.increase_level()
+        UPDATE_SPEED = max(0.1, UPDATE_SPEED - 0.1)
         player.refresh()
 
-    for car in car_manager.get_cars():
+    for car in car_manager.get_cars()[:]:
         if car.distance(player) < 10:
             game_is_on = False
+        elif car.xcor() < -320:
+            car_manager.remove_car(car)
 
-wwwwwscoreboard.game_over()
+scoreboard.game_over()
 screen.update()
     
 

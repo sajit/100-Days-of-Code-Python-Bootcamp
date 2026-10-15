@@ -30,3 +30,8 @@ class CarManager:
 
     def get_cars(self):
         return self.cars
+
+    def remove_car(self, car):
+        if car in self.cars:
+            car.hideturtle()
+            self.cars.remove(car)
