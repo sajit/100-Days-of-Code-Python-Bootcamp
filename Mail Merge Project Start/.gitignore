@@ -1,0 +1,4 @@
+
+# Generated invitation files; keep the example available for tracking.
+Output/ReadyToSend/*
+!Output/ReadyToSend/example.txt
