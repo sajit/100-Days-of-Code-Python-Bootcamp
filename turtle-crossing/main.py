@@ -31,8 +31,9 @@ while game_is_on:
         UPDATE_SPEED = max(0.1, UPDATE_SPEED - 0.1)
         player.refresh()
 
+    #check if turtle is hit by car
     for car in car_manager.get_cars()[:]:
-        if car.distance(player) < 10:
+        if car.distance(player) < 20:
             game_is_on = False
         elif car.xcor() < -320:
             car_manager.remove_car(car)
