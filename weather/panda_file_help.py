@@ -8,3 +8,7 @@ def get_weather_data_as_dict():
     csv_path = Path(__file__).with_name("weather_data.csv")
     data = pandas.read_csv(csv_path)
     return data.to_dict()
+
+def get_weather_data():
+    csv_path = Path(__file__).with_name("weather_data.csv")
+    return pandas.read_csv(csv_path)
