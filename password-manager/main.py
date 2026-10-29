@@ -39,9 +39,21 @@ def save_password():
     if email_entry == "":
         messagebox.showerror(title="Error",message="Email required")
         return
-    
 
-    pass
+    password_entry = password.get()
+    if password_entry == "":
+        messagebox.showerror(title="Error",message="Password required")
+        return
+
+    with open("password_data.txt",mode="a") as f:
+        f.write(f"{website_entry} | {email_entry} | {password_entry}\n")
+        messagebox.showinfo(title="Save",message="Added password to manager")
+
+    website.delete(0,END)
+    email.delete(0,END)
+    password.delete(0,END)    
+
+    
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Password Manager")
