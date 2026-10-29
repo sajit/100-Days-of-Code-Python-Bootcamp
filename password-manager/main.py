@@ -1,7 +1,11 @@
 from tkinter import *
-from pathlib import Path
+from tkinter import messagebox
 import random
 import string
+
+from pathlib import Path
+
+
 # 1. Get the directory of the current script, then append the file name
 file_path = Path(__file__).parent / "logo.png"
 # Comprehensive list of standard password special characters
@@ -26,6 +30,17 @@ def generate_password():
     
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
+    website_entry = website.get()
+    if website_entry == "":
+        messagebox.showerror(title="Error",message="Website required")
+        return
+
+    email_entry = email.get()
+    if email_entry == "":
+        messagebox.showerror(title="Error",message="Email required")
+        return
+    
+
     pass
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
