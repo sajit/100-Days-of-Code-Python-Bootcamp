@@ -1,11 +1,29 @@
 from tkinter import *
 from pathlib import Path
-
+import random
+import string
 # 1. Get the directory of the current script, then append the file name
 file_path = Path(__file__).parent / "logo.png"
+# Comprehensive list of standard password special characters
+password_symbols = [
+    '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', 
+    '-', '_', '+', '=', '[', ']', '{', '}', ';', ':', 
+    ',', '.', '<', '>', '/', '?', '|', '\\', '~', '`', 
+    '"', "'"
+]
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
-    pass
+    letters = random.sample(list(string.ascii_letters),random.randint(4,6))
+    digits = random.sample(['0','1','2','3','4','5','6','7','8','9'],random.randint(4,6))
+    symbols = random.sample(password_symbols,random.randint(4,6))
+    password_content = letters + digits + symbols
+    random.shuffle(password_content)
+    pwd_string = "".join(password_content)
+    password.insert(0,pwd_string)
+    
+
+    
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
     pass
