@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import random
 import string
+import json
 
 from pathlib import Path
 
@@ -44,9 +45,13 @@ def save_password():
     if password_entry == "":
         messagebox.showerror(title="Error",message="Password required")
         return
-
-    with open("password_data.txt",mode="a") as f:
-        f.write(f"{website_entry} | {email_entry} | {password_entry}\n")
+    entry = {
+        "website" : website_entry,
+        "email": email_entry,
+        "password": password_entry
+    }
+    with open("password_data.json",mode="a") as f:
+        f.write(json.dumps(entry))
         messagebox.showinfo(title="Save",message="Added password to manager")
 
     website.delete(0,END)
