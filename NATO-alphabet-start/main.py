@@ -30,9 +30,12 @@ npa_dict = {row['letter']:row['code'] for index,row in npa_df.iterrows()}
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
 
 user_input = input("Enter input")
+result = []
 try:
     for l in user_input.upper():
         code = npa_dict[l]
-        print(f"{l}:{code}")
+        result.append(l+"->"+code)
 except KeyError:
     print("Only alphabets allowed")
+else:
+    print(result)
