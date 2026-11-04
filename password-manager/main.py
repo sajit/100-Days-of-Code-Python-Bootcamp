@@ -46,12 +46,23 @@ def save_password():
         messagebox.showerror(title="Error",message="Password required")
         return
     entry = {
-        "website" : website_entry,
         "email": email_entry,
         "password": password_entry
     }
-    with open("password_data.json",mode="a") as f:
-        f.write(json.dumps(entry))
+    password_data = {}
+    try:
+        with open("password_data.json") as f:
+            try:
+                password_data = json.load(f)
+            except json.decoder.JSONDecodeError:
+                print("Empty file or not json")
+                pass
+    except FileNotFoundError:
+            pass
+
+    with open("password_data.json",mode="w") as f:    
+        password_data.update({website_entry:entry})
+        f.write(json.dumps(password_data))
         messagebox.showinfo(title="Save",message="Added password to manager")
 
     website.delete(0,END)
