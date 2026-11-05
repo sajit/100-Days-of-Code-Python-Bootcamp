@@ -9,11 +9,11 @@ displayed_words = []
 df = pandas.read_csv('data/french_words.csv',index_col=0)
 my_dict = df.iloc[:, 0].to_dict()
 correct_guess = []
-wrong_guesses = []
+
 french_words = list(my_dict.keys())
 # -------------------------- DISPLAY WORD ------------------------------#
 def get_next_word():
-    next_word = random.choice(french_words + wrong_guesses)
+    next_word = random.choice(french_words)
     canvas.itemconfig(word_id, text=f"{next_word}")
 
 
@@ -36,7 +36,12 @@ wrong_image = PhotoImage(file=Path(__file__).parent / "images/wrong.png")
 right_image = PhotoImage(file=Path(__file__).parent / "images/right.png")
 
 def click_correct():
+    #Remove the word from french_words . #add it to known words list
+    current_word = canvas.itemcget(word_id, "text")
+    correct_guess.append(current_word)
+    french_words.remove(current_word)
     get_next_word()
+
 def click_wrong():
     get_next_word()
 
