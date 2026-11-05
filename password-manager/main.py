@@ -49,16 +49,7 @@ def save_password():
         "email": email_entry,
         "password": password_entry
     }
-    password_data = {}
-    try:
-        with open("password_data.json") as f:
-            try:
-                password_data = json.load(f)
-            except json.decoder.JSONDecodeError:
-                print("Empty file or not json")
-                pass
-    except FileNotFoundError:
-            pass
+    password_data = get_password_data()
 
     with open("password_data.json",mode="w") as f:    
         password_data.update({website_entry:entry})
@@ -67,9 +58,39 @@ def save_password():
 
     website.delete(0,END)
     email.delete(0,END)
-    password.delete(0,END)    
+    password.delete(0,END) 
 
-    
+def get_password_data():
+    try:
+        with open("password_data.json") as f:
+            try:
+                password_data = json.load(f)
+            except json.decoder.JSONDecodeError:
+                print("Empty file or not json")
+                return {}
+    except FileNotFoundError:
+            return {}
+    return password_data   
+
+# ---------------------------LOOKUP WEBSITE ----------------------------------#
+def lookup_website():
+    email.delete(0,END)
+    password.delete(0,END) 
+    website_entry = website.get()
+    if website_entry == "":
+        return
+    password_data = get_password_data()
+    keys_list = list(password_data.keys())
+    if website_entry in keys_list:
+        username = password_data[website_entry]['email']
+        pwd_string = password_data[website_entry]['password']
+        password.insert(0,pwd_string)
+        email.insert(0,username)
+    else:
+        messagebox.showinfo(title="Result",message="Site not found")
+
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Password Manager")
@@ -84,6 +105,9 @@ website_label = Label(text="Website")
 website_label.grid(row=1,column=0)
 website = Entry()
 website.grid(row=1,column=1)
+
+search_button=Button(text="Search",command=lookup_website)
+search_button.grid(row=1,column=2)
 
 email_label = Label(text="Email")
 email_label.grid(row=2,column=0)
