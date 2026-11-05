@@ -1,6 +1,21 @@
 BACKGROUND_COLOR = "#B1DDC6"
 from tkinter import *
 from pathlib import Path
+import pandas
+import random
+
+
+displayed_words = []
+df = pandas.read_csv('data/french_words.csv',index_col=0)
+my_dict = df.iloc[:, 0].to_dict()
+correct_guess = []
+wrong_guesses = []
+french_words = list(my_dict.keys())
+# -------------------------- DISPLAY WORD ------------------------------#
+def get_next_word():
+    next_word = random.choice(french_words + wrong_guesses)
+    canvas.itemconfig(word_id, text=f"{next_word}")
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
@@ -21,10 +36,9 @@ wrong_image = PhotoImage(file=Path(__file__).parent / "images/wrong.png")
 right_image = PhotoImage(file=Path(__file__).parent / "images/right.png")
 
 def click_correct():
-    pass
-
+    get_next_word()
 def click_wrong():
-    pass
+    get_next_word()
 
 wrong_button = Button(image=wrong_image, command=click_wrong)
 wrong_button.grid(row=2, column=0, sticky="w")
@@ -35,5 +49,5 @@ correct_button.grid(row=2, column=1, sticky="e")
 window.columnconfigure(0, weight=1)
 window.columnconfigure(1, weight=1)
 
-
+get_next_word()
 window.mainloop()
