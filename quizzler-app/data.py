@@ -106,4 +106,4 @@ response = requests.get("https://opentdb.com/api.php?amount=10")
 response.raise_for_status()
 
 question_data = response.json()["results"]
-print(question_data)
+#print(question_data)
