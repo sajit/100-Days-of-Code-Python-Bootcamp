@@ -4,7 +4,8 @@ from tkinter import *
 from pathlib import Path
 class QuizInterface:
 
-    def __init__(self):
+    def __init__(self, quiz_brain):
+        self.quiz = quiz_brain
         self.window = Tk()
         self.window.title("quizzler")
         self.window.config(padx=20, pady=20, bg=THEME_COLOR)
@@ -23,10 +24,35 @@ class QuizInterface:
         self.wrong_button = Button(image=self.false_button_image, command=self.click_false)
         self.wrong_button.grid(row=2, column=1, pady=(0, 10))
 
+        self.display_next_question()
         self.window.mainloop()
 
     def click_true(self):
-        pass
+        self.check_answer("True")
 
     def click_false(self):
-        pass
+        self.check_answer("False")
+
+    def check_answer(self, user_answer):
+        # if not self.quiz.still_has_questions():
+        #     return
+        self.quiz.check_answer(user_answer)
+        self.score_label.config(text=f"Score: {self.quiz.score}")
+        self.display_next_question()
+
+    def display_next_question(self):
+        self.canvas.delete("all")
+        if self.quiz.still_has_questions():
+            question = self.quiz.next_question()
+            self.canvas.create_text(
+                150, 125, width=280, text=question.text,
+                font=("Arial", 20, "italic"), fill=THEME_COLOR,
+            )
+        else:
+            self.canvas.create_text(
+                150, 125, width=280, text="You've completed the quiz!",
+                font=("Arial", 20, "italic"), fill=THEME_COLOR,
+            )
+            self.right_button.config(state="disabled")
+            self.wrong_button.config(state="disabled")
+        
